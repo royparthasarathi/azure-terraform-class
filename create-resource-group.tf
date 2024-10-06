@@ -31,3 +31,18 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = azurerm_resource_group.rg.name
 
 }
+# Create subnet for worksSN
+resource "azurerm_subnet" "worksSN" {
+  name                 = "worksSN"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = ["172.16.1.0/24"]
+}
+
+# Create subnet for AppSN
+resource "azurerm_subnet" "AppSN" {
+  name                 = "AppSN"
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = ["172.16.2.0/24"]
+}
